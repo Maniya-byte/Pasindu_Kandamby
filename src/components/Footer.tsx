@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="https://linkedin.com"
+            href="http://www.linkedin.com/in/pasindu-manelka-kandamby"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
