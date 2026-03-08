@@ -13,7 +13,7 @@ const navItems = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <>
