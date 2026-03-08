@@ -49,7 +49,7 @@ export default function HeroCarousel() {
   }, [paginate]);
 
   return (
-    <div className="relative h-[70vh] w-full overflow-hidden rounded-lg">
+    <div className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] w-full overflow-hidden rounded-xl">
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           key={page}
@@ -65,15 +65,15 @@ export default function HeroCarousel() {
         />
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
 
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-4">
+      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
         <button
           onClick={() => paginate(-1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-4 w-4" />
         </button>
 
         <div className="flex gap-2">
@@ -91,10 +91,10 @@ export default function HeroCarousel() {
 
         <button
           onClick={() => paginate(1)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
           aria-label="Next slide"
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-4 w-4" />
         </button>
       </div>
     </div>
