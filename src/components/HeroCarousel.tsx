@@ -1,0 +1,100 @@
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import hero1 from "@/assets/hero-1.jpg";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.jpg";
+
+const slides = [
+  { src: hero1, alt: "Creative workspace with code" },
+  { src: hero2, alt: "Design tools and tablet" },
+  { src: hero3, alt: "Typing on keyboard" },
+];
+
+const variants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? "100%" : "-100%",
+    opacity: 0,
+    scale: 1.1,
+  }),
+  center: { x: 0, opacity: 1, scale: 1 },
+  exit: (dir: number) => ({
+    x: dir < 0 ? "100%" : "-100%",
+    opacity: 0,
+    scale: 0.95,
+  }),
+};
+
+export default function HeroCarousel() {
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  const paginate = useCallback(
+    (newDir: number) => {
+      setPage(([prev]) => {
+        const next = (prev + newDir + slides.length) % slides.length;
+        return [next, newDir];
+      });
+    },
+    []
+  );
+
+  useEffect(() => {
+    const timer = setInterval(() => paginate(1), 5000);
+    return () => clearInterval(timer);
+  }, [paginate]);
+
+  return (
+    <div className="relative h-[70vh] w-full overflow-hidden rounded-lg">
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.img
+          key={page}
+          src={slides[page].src}
+          alt={slides[page].alt}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </AnimatePresence>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+      {/* Controls */}
+      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-4">
+        <button
+          onClick={() => paginate(-1)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+
+        <div className="flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage([i, i > page ? 1 : -1])}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === page ? "w-8 bg-primary" : "w-4 bg-muted-foreground/40"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => paginate(1)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/50 text-foreground backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+  );
+}
