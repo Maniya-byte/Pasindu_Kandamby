@@ -149,7 +149,7 @@ export default function About() {
               </p>
 
               <motion.a
-                href="/cv.pdf"
+                href="/src/assets/cv.pdf"
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -160,9 +160,6 @@ export default function About() {
                 <Sparkles className="h-4 w-4" />
               </motion.a>
 
-              <p className="mt-4 text-xs text-muted-foreground">
-                Upload your CV as <code className="font-mono text-primary/70">public/cv.pdf</code> to make it downloadable.
-              </p>
             </div>
           </motion.div>
         </div>
