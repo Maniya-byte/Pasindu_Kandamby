@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
 import Layout from "@/components/Layout";
 import { projects } from "@/data/portfolioData";
+import ProgressiveImage from "@/components/ProgressiveImage";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -88,10 +89,10 @@ export default function ProjectDetail() {
             className="mb-8"
           >
             {project.image ? (
-              <img
+              <ProgressiveImage
                 src={project.image}
                 alt={project.title}
-                loading="lazy"
+                containerClassName="w-full rounded-xl"
                 className="w-full rounded-xl object-cover"
                 style={{ maxHeight: "500px" }}
               />
@@ -116,35 +117,35 @@ export default function ProjectDetail() {
             </p>
           </motion.div>
 
-          {/* External link */}
-          {project.link && project.link !== "#" && (
-            <motion.a
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.4 }}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-105 mr-4"
-            >
-              Visit Project <ExternalLink className="h-4 w-4" />
-            </motion.a>
-          )}
+          {/* Action buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.4 }}
+            className="flex flex-wrap gap-4"
+          >
+            {project.link && project.link !== "#" && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-105"
+              >
+                Visit Project <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
 
-          {/* Project File link */}
-          {project.projectFile && project.projectFile !== "#" && (
-            <motion.a
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.4 }}
-              href={project.projectFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
-            >
-              <FileText className="h-4 w-4" /> Project File
-            </motion.a>
-          )}
+            {project.projectFile && project.projectFile !== "#" && (
+              <a
+                href={project.projectFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+              >
+                <FileText className="h-4 w-4" /> Project File
+              </a>
+            )}
+          </motion.div>
         </div>
       </section>
     </Layout>

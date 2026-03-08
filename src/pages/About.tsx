@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Github, Linkedin, Globe, Download, FileText, Sparkles, GraduationCap, Award } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Globe, GraduationCap, Award, Archive } from "lucide-react";
 import Layout from "@/components/Layout";
 import { profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import ProgressiveImage from "@/components/ProgressiveImage";
+import CvDownloadButton from "@/components/CvDownloadButton";
 
 export default function About() {
   return (
@@ -26,14 +28,12 @@ export default function About() {
                 <div className="absolute -inset-3 rounded-2xl border border-primary/20 rotate-3" />
                 <div className="absolute -inset-3 rounded-2xl border border-primary/10 -rotate-3" />
                 <div className="absolute -inset-4 rounded-3xl bg-primary/10 blur-xl" />
-                <div className="relative h-44 w-44 overflow-hidden rounded-2xl border-2 border-primary/40 bg-muted shadow-[var(--shadow-glow)]">
-                  <img
-                    src={profilePhoto}
-                    alt={profileData.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-center"
-                  />
-                </div>
+                <ProgressiveImage
+                  src={profilePhoto}
+                  alt={profileData.name}
+                  containerClassName="relative h-44 w-44 rounded-2xl border-2 border-primary/40 bg-muted shadow-[var(--shadow-glow)]"
+                  className="h-full w-full object-cover object-center"
+                />
                 <div className="absolute -bottom-1.5 -right-1.5 h-4 w-4 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
               </div>
             </motion.div>
@@ -198,9 +198,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
-            className="relative overflow-hidden rounded-2xl border border-primary/30 p-10 text-center"
+            className="relative overflow-visible rounded-2xl border border-primary/30 p-10 text-center"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
             <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
             <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
 
@@ -212,7 +212,12 @@ export default function About() {
                 transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                 className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/20"
               >
-                <FileText className="h-8 w-8 text-primary" />
+                <motion.div
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Archive className="h-8 w-8 text-primary" />
+                </motion.div>
               </motion.div>
 
               <h2 className="text-3xl font-bold mb-2">Want to know more?</h2>
@@ -220,17 +225,7 @@ export default function About() {
                 Download my full CV to explore my complete professional background, certifications, and qualifications.
               </p>
 
-              <motion.a
-                href="/src/assets/cv.pdf"
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-shadow hover:shadow-[0_0_60px_-10px_hsl(36_90%_55%_/_0.5)]"
-              >
-                <Download className="h-5 w-5" />
-                Download My CV
-                <Sparkles className="h-4 w-4" />
-              </motion.a>
+              <CvDownloadButton />
             </div>
           </motion.div>
         </div>

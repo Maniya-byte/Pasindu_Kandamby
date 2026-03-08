@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/portfolioData";
+import ProgressiveImage from "@/components/ProgressiveImage";
 
 interface Props {
   project: Project;
@@ -20,10 +21,10 @@ export default function ProjectCard({ project, index, onClick }: Props) {
       onClick={onClick}
     >
       {project.image ? (
-        <img
+        <ProgressiveImage
           src={project.image}
           alt={project.title}
-          loading="lazy"
+          containerClassName="h-48 w-full rounded-lg"
           className="h-48 w-full rounded-lg object-cover"
         />
       ) : (
