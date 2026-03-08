@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
 import Layout from "@/components/Layout";
 import { projects } from "@/data/portfolioData";
 
@@ -105,14 +105,16 @@ export default function ProjectDetail() {
           </motion.div>
 
           {/* Description */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-8"
+            className="mb-8"
           >
-            {project.description}
-          </motion.p>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg whitespace-pre-wrap break-words">
+              {project.description}
+            </p>
+          </motion.div>
 
           {/* External link */}
           {project.link && project.link !== "#" && (
@@ -123,9 +125,24 @@ export default function ProjectDetail() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-105 mr-4"
             >
               Visit Project <ExternalLink className="h-4 w-4" />
+            </motion.a>
+          )}
+
+          {/* Project File link */}
+          {project.projectFile && project.projectFile !== "#" && (
+            <motion.a
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              href={project.projectFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            >
+              <FileText className="h-4 w-4" /> Project File
             </motion.a>
           )}
         </div>

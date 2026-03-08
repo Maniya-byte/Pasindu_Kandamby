@@ -12,9 +12,10 @@ const projects: ProjectEntry[] = [
     title: "Enterprise VLAN Configuration",
     description:
       "Designed and implemented a multi-VLAN architecture for a corporate network with 500+ endpoints, including inter-VLAN routing using Layer 3 switches.",
-    image: "", // e.g. "vlan-setup.jpg"
+    image: "",
     tags: ["Cisco", "VLAN", "Layer 3"],
     link: "#",
+    projectFile: "#",
   },
   {
     number: 2,
@@ -24,6 +25,7 @@ const projects: ProjectEntry[] = [
     image: "",
     tags: ["OSPF", "WAN", "Redundancy"],
     link: "#",
+    projectFile: "#",
   },
   // --- ADD MORE PROJECTS BELOW ---
 ];

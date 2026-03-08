@@ -15,6 +15,7 @@ const projects: ProjectEntry[] = [
     image: "",
     tags: ["Palo Alto", "Next-Gen", "Threat Prevention"],
     link: "#",
+    projectFile: "#",
   },
   {
     number: 2,
@@ -24,6 +25,7 @@ const projects: ProjectEntry[] = [
     image: "",
     tags: ["Fortinet", "VPN", "IPSec"],
     link: "#",
+    projectFile: "#",
   },
   // --- ADD MORE PROJECTS BELOW ---
 ];
