@@ -1,18 +1,17 @@
 import { useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
-import ProjectDetailModal from "@/components/ProjectDetailModal";
-import { categories, projects, type Project } from "@/data/portfolioData";
+import { categories, projects } from "@/data/portfolioData";
 
 const ITEMS_PER_PAGE = 12;
 
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const initialCat = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState(initialCat);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   const filtered = useMemo(
@@ -55,6 +54,7 @@ export default function Projects() {
             </p>
           </motion.div>
 
+          {/* Category filters */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,13 +86,14 @@ export default function Projects() {
             ))}
           </motion.div>
 
+          {/* Project grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visible.map((project, i) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 index={i}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => navigate(`/projects/${project.id}`)}
               />
             ))}
           </div>
@@ -105,21 +106,18 @@ export default function Projects() {
 
           {hasMore && (
             <div className="mt-10 text-center">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => setVisibleCount((c) => c + ITEMS_PER_PAGE)}
                 className="rounded-full border border-border px-8 py-3 text-sm font-medium text-muted-foreground transition-all hover:border-primary hover:text-primary"
               >
                 Show More ({filtered.length - visibleCount} remaining)
-              </button>
+              </motion.button>
             </div>
           )}
         </div>
       </section>
-
-      <ProjectDetailModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </Layout>
   );
 }

@@ -14,8 +14,9 @@ export default function ProjectCard({ project, index, onClick }: Props) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="group card-hover rounded-xl border border-border bg-card p-6 flex flex-col gap-4 cursor-pointer"
+      transition={{ delay: index * 0.08, duration: 0.5 }}
+      whileHover={{ y: -4 }}
+      className="group rounded-xl border border-border bg-card p-6 flex flex-col gap-4 cursor-pointer transition-shadow duration-300 hover:shadow-[var(--shadow-glow)]"
       onClick={onClick}
     >
       {project.image ? (
@@ -55,7 +56,7 @@ export default function ProjectCard({ project, index, onClick }: Props) {
 
       <div className="mt-auto pt-2">
         <span className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-1">
-          View Project <ArrowUpRight className="h-4 w-4" />
+          See More <ArrowUpRight className="h-4 w-4" />
         </span>
       </div>
     </motion.article>
