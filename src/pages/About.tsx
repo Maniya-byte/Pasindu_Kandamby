@@ -22,12 +22,22 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="shrink-0"
             >
-              <div className="h-40 w-40 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-[var(--shadow-glow)]">
-                <img
-                  src={profilePhoto}
-                  alt={profileData.name}
-                  className="h-full w-full object-cover"
-                />
+              <div className="relative">
+                {/* Decorative ring */}
+                <div className="absolute -inset-3 rounded-2xl border border-primary/20 rotate-3" />
+                <div className="absolute -inset-3 rounded-2xl border border-primary/10 -rotate-3" />
+                {/* Glow effect */}
+                <div className="absolute -inset-4 rounded-3xl bg-primary/10 blur-xl" />
+                {/* Image container */}
+                <div className="relative h-44 w-44 overflow-hidden rounded-2xl border-2 border-primary/40 bg-muted shadow-[var(--shadow-glow)]">
+                  <img
+                    src={profilePhoto}
+                    alt={profileData.name}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+                {/* Corner accent */}
+                <div className="absolute -bottom-1.5 -right-1.5 h-4 w-4 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
               </div>
             </motion.div>
 
