@@ -20,6 +20,7 @@ export default function Index() {
 
   return (
     <Layout>
+      <WavingRobot />
       {/* Hero Carousel */}
       <section className="section-padding pb-0">
         <div className="mx-auto max-w-6xl">
