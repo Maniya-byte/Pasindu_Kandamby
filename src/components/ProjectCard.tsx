@@ -32,12 +32,17 @@ export default function ProjectCard({ project, index, onClick }: Props) {
         </div>
       )}
 
-      <div className="flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span key={tag} className="category-badge">
-            {tag}
-          </span>
-        ))}
+      <div className="flex items-center gap-2">
+        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 font-mono text-[11px] text-primary">
+          #{project.number}
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span key={tag} className="category-badge">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
 
       <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Github, Linkedin, Twitter, Download, FileText, Sparkles } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Globe, Download, FileText, Sparkles } from "lucide-react";
 import Layout from "@/components/Layout";
 import { profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -58,8 +58,8 @@ export default function About() {
                 <a href={profileData.social.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
                   <Linkedin className="h-4 w-4" />
                 </a>
-                <a href={profileData.social.twitter} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
-                  <Twitter className="h-4 w-4" />
+                <a href={profileData.social.website} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
+                  <Globe className="h-4 w-4" />
                 </a>
               </div>
             </motion.div>
@@ -120,7 +120,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* CV Download - Enhanced CTA */}
+          {/* CV Download */}
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -128,7 +128,6 @@ export default function About() {
             transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
             className="relative overflow-hidden rounded-2xl border border-primary/30 p-10 text-center"
           >
-            {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
             <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
             <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />

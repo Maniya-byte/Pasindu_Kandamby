@@ -6,11 +6,14 @@ import ProjectCard from "@/components/ProjectCard";
 import ProjectDetailModal from "@/components/ProjectDetailModal";
 import { categories, projects, type Project } from "@/data/portfolioData";
 
+const ITEMS_PER_PAGE = 12;
+
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCat = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState(initialCat);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
   const filtered = useMemo(
     () =>
@@ -20,8 +23,12 @@ export default function Projects() {
     [activeCategory]
   );
 
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
+
   const handleCategory = (id: string) => {
     setActiveCategory(id);
+    setVisibleCount(ITEMS_PER_PAGE);
     if (id === "all") {
       setSearchParams({});
     } else {
@@ -80,7 +87,7 @@ export default function Projects() {
           </motion.div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((project, i) => (
+            {visible.map((project, i) => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -94,6 +101,17 @@ export default function Projects() {
             <p className="py-20 text-center text-muted-foreground">
               No projects in this category yet.
             </p>
+          )}
+
+          {hasMore && (
+            <div className="mt-10 text-center">
+              <button
+                onClick={() => setVisibleCount((c) => c + ITEMS_PER_PAGE)}
+                className="rounded-full border border-border px-8 py-3 text-sm font-medium text-muted-foreground transition-all hover:border-primary hover:text-primary"
+              >
+                Show More ({filtered.length - visibleCount} remaining)
+              </button>
+            </div>
           )}
         </div>
       </section>
