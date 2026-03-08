@@ -149,7 +149,7 @@ export default function About() {
               </p>
 
               <motion.a
-                href="/cv.pdf"
+                href="/src/assets/cv.pdf"
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
