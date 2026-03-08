@@ -11,8 +11,8 @@ export default function CvDownloadButton() {
 
     // Trigger actual download
     const link = document.createElement("a");
-    link.href = "/src/assets/cv.pdf";
-    link.download = "cv.pdf";
+    link.href = "/pasindu_kandamby.pdf";
+    link.download = "pasindu_kandamby.pdf";
     link.click();
 
     setTimeout(() => setState("done"), 1800);
@@ -115,7 +115,7 @@ export default function CvDownloadButton() {
             >
               <div className="flex items-center gap-1.5 rounded-full bg-primary/15 border border-primary/30 px-3 py-1.5">
                 <Archive className="h-4 w-4 text-primary" />
-                <span className="text-xs font-medium text-primary">Archived</span>
+                <span className="text-xs font-medium text-primary">Downloaded</span>
               </div>
             </motion.div>
 
