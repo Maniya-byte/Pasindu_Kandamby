@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Globe, Smartphone, Palette, Brain } from "lucide-react";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
 import ProjectCard from "@/components/ProjectCard";
-import { categories, projects, profileData } from "@/data/portfolioData";
+import ProjectDetailModal from "@/components/ProjectDetailModal";
+import { categories, projects, profileData, type Project } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -15,6 +17,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function Index() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <Layout>
       {/* Hero Carousel Section */}
@@ -64,7 +68,6 @@ export default function Index() {
               {profileData.bio}
             </p>
 
-            {/* Skills */}
             <div className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
               {profileData.skills.map((skill) => (
                 <span key={skill} className="category-badge">
@@ -152,7 +155,12 @@ export default function Index() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.slice(0, 3).map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={i}
+                onClick={() => setSelectedProject(project)}
+              />
             ))}
           </div>
 
@@ -166,6 +174,11 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </Layout>
   );
 }
