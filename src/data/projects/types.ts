@@ -7,4 +7,5 @@ export interface ProjectEntry {
   image: string; // filename inside src/assets/projects/ (leave "" for placeholder)
   tags: string[];
   link?: string; // external URL
+  projectFile?: string; // link to project file/document
 }

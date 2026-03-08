@@ -25,6 +25,7 @@ export interface Project {
   image: string;
   tags: string[];
   link?: string;
+  projectFile?: string;
 }
 
 // Map category id → raw entries
@@ -48,5 +49,6 @@ export const projects: Project[] = Object.entries(categoryProjects).flatMap(
         : "",
       tags: entry.tags,
       link: entry.link,
+      projectFile: entry.projectFile,
     }))
 );

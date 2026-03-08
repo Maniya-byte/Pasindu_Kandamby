@@ -15,6 +15,7 @@ const projects: ProjectEntry[] = [
     image: "",
     tags: ["Windows Server", "AD DS", "GPO"],
     link: "#",
+    projectFile: "#",
   },
   {
     number: 2,
@@ -24,6 +25,7 @@ const projects: ProjectEntry[] = [
     image: "",
     tags: ["Linux", "Security", "Automation"],
     link: "#",
+    projectFile: "#",
   },
   // --- ADD MORE PROJECTS BELOW ---
 ];
