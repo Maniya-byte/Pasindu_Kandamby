@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Github, Linkedin, Globe, Download, FileText, Sparkles } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Globe, Download, FileText, Sparkles, GraduationCap, Award } from "lucide-react";
 import Layout from "@/components/Layout";
 import { profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -23,12 +23,9 @@ export default function About() {
               className="shrink-0"
             >
               <div className="relative">
-                {/* Decorative ring */}
                 <div className="absolute -inset-3 rounded-2xl border border-primary/20 rotate-3" />
                 <div className="absolute -inset-3 rounded-2xl border border-primary/10 -rotate-3" />
-                {/* Glow effect */}
                 <div className="absolute -inset-4 rounded-3xl bg-primary/10 blur-xl" />
-                {/* Image container */}
                 <div className="relative h-44 w-44 overflow-hidden rounded-2xl border-2 border-primary/40 bg-muted shadow-[var(--shadow-glow)]">
                   <img
                     src={profilePhoto}
@@ -36,7 +33,6 @@ export default function About() {
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
-                {/* Corner accent */}
                 <div className="absolute -bottom-1.5 -right-1.5 h-4 w-4 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
               </div>
             </motion.div>
@@ -62,13 +58,13 @@ export default function About() {
                 </span>
               </div>
               <div className="mt-4 flex justify-center gap-3 md:justify-start">
-                <a href={profileData.social.github} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
+                <a href={profileData.social.github} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                   <Github className="h-4 w-4" />
                 </a>
-                <a href={profileData.social.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
+                <a href={profileData.social.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                   <Linkedin className="h-4 w-4" />
                 </a>
-                <a href={profileData.social.website} target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary">
+                <a href={profileData.social.website} target="_blank" rel="noopener noreferrer" className="social-icon-link">
                   <Globe className="h-4 w-4" />
                 </a>
               </div>
@@ -83,7 +79,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="mb-8 text-2xl font-bold">Experience</h2>
+            <h2 className="section-heading">Experience</h2>
             <div className="space-y-6">
               {profileData.experience.map((exp, i) => (
                 <motion.div
@@ -92,14 +88,79 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ delay: i * 0.15, duration: 0.5 }}
-                  className="rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-glow)]"
+                  className="info-card"
                 >
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                    <h3 className="text-lg font-bold text-foreground">{exp.role}</h3>
-                    <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
+                    <h3 className="info-card-title">{exp.role}</h3>
+                    <span className="info-card-meta">{exp.period}</span>
                   </div>
-                  <p className="mt-1 text-sm font-medium text-primary">{exp.company}</p>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                  <p className="info-card-subtitle">{exp.company}</p>
+                  <p className="info-card-description">{exp.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Education */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="section-heading flex items-center gap-2">
+              <GraduationCap className="h-6 w-6 text-primary" />
+              Education
+            </h2>
+            <div className="space-y-6">
+              {profileData.education.map((edu, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.15, duration: 0.5 }}
+                  className="info-card"
+                >
+                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                    <h3 className="info-card-title">{edu.degree}</h3>
+                    <span className="info-card-meta">{edu.period}</span>
+                  </div>
+                  <p className="info-card-subtitle">{edu.institution}</p>
+                  <p className="info-card-description">{edu.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Certifications */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="section-heading flex items-center gap-2">
+              <Award className="h-6 w-6 text-primary" />
+              Certifications
+            </h2>
+            <div className="space-y-4">
+              {profileData.certifications.map((cert, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.15, duration: 0.5 }}
+                  className="info-card"
+                >
+                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                    <h3 className="info-card-title">{cert.name}</h3>
+                    <span className="info-card-meta">{cert.year}</span>
+                  </div>
+                  <p className="info-card-subtitle">{cert.issuer}</p>
                 </motion.div>
               ))}
             </div>
@@ -113,7 +174,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="mb-8 text-2xl font-bold">Skills</h2>
+            <h2 className="section-heading">Skills</h2>
             <div className="flex flex-wrap gap-3">
               {profileData.skills.map((skill, i) => (
                 <motion.span
@@ -169,7 +230,6 @@ export default function About() {
                 Download My CV
                 <Sparkles className="h-4 w-4" />
               </motion.a>
-
             </div>
           </motion.div>
         </div>

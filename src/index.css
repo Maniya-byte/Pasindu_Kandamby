@@ -140,6 +140,37 @@
     @apply px-6 py-20 md:px-12 lg:px-24;
   }
 
+  .section-heading {
+    @apply mb-8 text-2xl font-bold text-foreground;
+  }
+
+  .info-card {
+    @apply rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30;
+    &:hover {
+      box-shadow: var(--shadow-glow);
+    }
+  }
+
+  .info-card-title {
+    @apply text-lg font-bold text-foreground;
+  }
+
+  .info-card-subtitle {
+    @apply mt-1 text-sm font-medium text-primary;
+  }
+
+  .info-card-meta {
+    @apply font-mono text-xs text-muted-foreground;
+  }
+
+  .info-card-description {
+    @apply mt-2 text-sm text-muted-foreground leading-relaxed;
+  }
+
+  .social-icon-link {
+    @apply flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary;
+  }
+
   .carousel-slide {
     @apply relative w-full overflow-hidden;
   }

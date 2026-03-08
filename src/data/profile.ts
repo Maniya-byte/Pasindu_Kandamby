@@ -1,5 +1,7 @@
 // ============================================================
 // PROFILE DATA — Update your personal info here.
+// Each array (experience, education, certifications, skills)
+// is repeatable: just copy-paste an entry to add more.
 // ============================================================
 
 export const profileData = {
@@ -13,6 +15,9 @@ export const profileData = {
     linkedin: "http://www.linkedin.com/in/pasindu-manelka-kandamby",
     website: "https://example.com",
   },
+
+  // ── SKILLS ──────────────────────────────────────────────────
+  // Just add a new string to extend the list.
   skills: [
     "Cisco",
     "Palo Alto",
@@ -25,6 +30,15 @@ export const profileData = {
     "Python",
     "Networking",
   ],
+
+  // ── EXPERIENCE ──────────────────────────────────────────────
+  // Copy the block below and fill in your details to add more.
+  // {
+  //   role: "Your Role",
+  //   company: "Company Name",
+  //   period: "Start – End",
+  //   description: "Brief description of responsibilities.",
+  // },
   experience: [
     {
       role: "Senior Developer",
@@ -39,6 +53,39 @@ export const profileData = {
       period: "2020 – 2022",
       description:
         "Built and shipped multiple products from concept to production.",
+    },
+  ],
+
+  // ── EDUCATION ───────────────────────────────────────────────
+  // Copy the block below and fill in your details to add more.
+  // {
+  //   degree: "Your Degree",
+  //   institution: "University Name",
+  //   period: "Start – End",
+  //   description: "Brief description or achievements.",
+  // },
+  education: [
+    {
+      degree: "Bachelor of Science in Information Technology",
+      institution: "University Name",
+      period: "2018 – 2022",
+      description:
+        "Specialized in network engineering and cybersecurity.",
+    },
+  ],
+
+  // ── CERTIFICATIONS ──────────────────────────────────────────
+  // Copy the block below and fill in your details to add more.
+  // {
+  //   name: "Certification Name",
+  //   issuer: "Issuing Organization",
+  //   year: "Year",
+  // },
+  certifications: [
+    {
+      name: "CCNA – Cisco Certified Network Associate",
+      issuer: "Cisco",
+      year: "2023",
     },
   ],
 };

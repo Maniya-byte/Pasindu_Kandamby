@@ -21,7 +21,7 @@ export default function Footer() {
             href="http://www.linkedin.com/in/pasindu-manelka-kandamby"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+            className="social-icon-link"
             aria-label="LinkedIn"
           >
             <Linkedin className="h-4 w-4" />
@@ -30,7 +30,7 @@ export default function Footer() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+            className="social-icon-link"
             aria-label="GitHub"
           >
             <Github className="h-4 w-4" />
@@ -39,7 +39,7 @@ export default function Footer() {
             href="https://example.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+            className="social-icon-link"
             aria-label="Website"
           >
             <Globe className="h-4 w-4" />
