@@ -5,11 +5,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
+import hero4 from "@/assets/hero-4.jpg";
+import hero5 from "@/assets/hero-5.jpg";
 
 const slides = [
-  { src: hero1, alt: "Creative workspace with code" },
-  { src: hero2, alt: "Design tools and tablet" },
-  { src: hero3, alt: "Typing on keyboard" },
+  { src: hero1, alt: "Cisco network switches and routers" },
+  { src: hero2, alt: "Palo Alto Networks firewall appliance" },
+  { src: hero3, alt: "Fortinet FortiGate security appliance" },
+  { src: hero4, alt: "Network operations center" },
+  { src: hero5, alt: "Fiber optic cables and patch panels" },
 ];
 
 const variants = {
@@ -61,10 +65,8 @@ export default function HeroCarousel() {
         />
       </AnimatePresence>
 
-      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
-      {/* Controls */}
       <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-4">
         <button
           onClick={() => paginate(-1)}

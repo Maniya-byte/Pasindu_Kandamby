@@ -1,5 +1,4 @@
 // All portfolio data in one place — easy to swap with a database later.
-// Update any field here and the site updates everywhere.
 
 export interface Project {
   id: string;
@@ -15,7 +14,7 @@ export interface Category {
   id: string;
   name: string;
   description: string;
-  icon: string; // lucide icon name
+  icon: string;
 }
 
 export const categories: Category[] = [
@@ -109,9 +108,9 @@ export const projects: Project[] = [
 ];
 
 export const profileData = {
-  name: "Your Name",
-  title: "Full-Stack Developer & Designer",
-  bio: "I craft digital experiences that blend clean code with thoughtful design. Passionate about building products that make a difference.",
+  name: "Pasindu Kandamby",
+  title: "Network & System Administrator",
+  bio: "I craft secure network infrastructures and manage enterprise systems. Passionate about cybersecurity, firewall management, and building resilient IT environments.",
   email: "hello@example.com",
   location: "San Francisco, CA",
   social: {

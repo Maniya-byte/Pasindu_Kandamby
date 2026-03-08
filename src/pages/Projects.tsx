@@ -3,12 +3,14 @@ import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
-import { categories, projects } from "@/data/portfolioData";
+import ProjectDetailModal from "@/components/ProjectDetailModal";
+import { categories, projects, type Project } from "@/data/portfolioData";
 
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCat = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState(initialCat);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filtered = useMemo(
     () =>
@@ -31,7 +33,6 @@ export default function Projects() {
     <Layout>
       <section className="section-padding">
         <div className="mx-auto max-w-6xl">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,12 +44,10 @@ export default function Projects() {
             </p>
             <h1 className="text-4xl font-bold md:text-5xl">All Projects</h1>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-              Browse projects by category. Each project includes a description,
-              technologies used, and uploaded files.
+              Browse projects by category. Click any project to see full details.
             </p>
           </motion.div>
 
-          {/* Category Filter */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,10 +79,14 @@ export default function Projects() {
             ))}
           </motion.div>
 
-          {/* Projects Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={i}
+                onClick={() => setSelectedProject(project)}
+              />
             ))}
           </div>
 
@@ -94,6 +97,11 @@ export default function Projects() {
           )}
         </div>
       </section>
+
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </Layout>
   );
 }
