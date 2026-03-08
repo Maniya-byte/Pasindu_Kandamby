@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Network, Server, Shield } from "lucide-react";
@@ -7,6 +6,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import ProjectCard from "@/components/ProjectCard";
 import { categories, projects, profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import ProgressiveImage from "@/components/ProgressiveImage";
 import WavingRobot from "@/components/WavingRobot";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -38,8 +38,13 @@ export default function Index() {
             transition={{ duration: 0.6 }}
             className="shrink-0"
           >
-            <div className="relative h-48 w-48 overflow-hidden rounded-2xl border-2 border-primary/30 md:h-56 md:w-56">
-              <img src={profilePhoto} alt={profileData.name} loading="lazy" className="h-full w-full object-cover" />
+            <div className="relative">
+              <ProgressiveImage
+                src={profilePhoto}
+                alt={profileData.name}
+                containerClassName="h-48 w-48 overflow-hidden rounded-2xl border-2 border-primary/30 md:h-56 md:w-56"
+                className="h-full w-full object-cover"
+              />
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-foreground/10" />
             </div>
           </motion.div>
