@@ -91,6 +91,7 @@ export default function ProjectDetail() {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
                 className="w-full rounded-xl object-cover"
                 style={{ maxHeight: "500px" }}
               />

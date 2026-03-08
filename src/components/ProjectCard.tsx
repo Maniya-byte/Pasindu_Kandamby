@@ -23,6 +23,7 @@ export default function ProjectCard({ project, index, onClick }: Props) {
         <img
           src={project.image}
           alt={project.title}
+          loading="lazy"
           className="h-48 w-full rounded-lg object-cover"
         />
       ) : (
