@@ -30,6 +30,7 @@ export default function About() {
                   <img
                     src={profilePhoto}
                     alt={profileData.name}
+                    loading="lazy"
                     className="h-full w-full object-cover object-center"
                   />
                 </div>

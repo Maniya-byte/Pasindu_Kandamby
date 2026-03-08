@@ -39,7 +39,7 @@ export default function Index() {
             className="shrink-0"
           >
             <div className="relative h-48 w-48 overflow-hidden rounded-2xl border-2 border-primary/30 md:h-56 md:w-56">
-              <img src={profilePhoto} alt={profileData.name} className="h-full w-full object-cover" />
+              <img src={profilePhoto} alt={profileData.name} loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-foreground/10" />
             </div>
           </motion.div>

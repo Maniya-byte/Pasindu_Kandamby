@@ -61,6 +61,7 @@ export default function HeroCarousel() {
           animate="center"
           exit="exit"
           transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
+          loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
       </AnimatePresence>
