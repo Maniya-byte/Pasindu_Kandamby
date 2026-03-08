@@ -14,13 +14,16 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Fixed top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12">
-        <Link to="/" className="relative z-50 font-display text-xl font-bold tracking-tight text-foreground">
-          Port<span className="gradient-text">folio</span>
+        <Link to="/" className="relative z-50 flex flex-col">
+          <span className="font-display text-lg font-bold tracking-tight text-foreground leading-tight">
+            Pasindu Kandamby
+          </span>
+          <span className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase">
+            Network & System Administrator
+          </span>
         </Link>
 
-        {/* Hamburger */}
         <button
           onClick={() => setOpen(!open)}
           className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5"
@@ -44,7 +47,6 @@ export default function Navbar() {
         </button>
       </header>
 
-      {/* Fullscreen overlay nav */}
       <AnimatePresence>
         {open && (
           <motion.nav

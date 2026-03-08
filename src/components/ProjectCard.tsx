@@ -5,18 +5,19 @@ import type { Project } from "@/data/portfolioData";
 interface Props {
   project: Project;
   index: number;
+  onClick?: () => void;
 }
 
-export default function ProjectCard({ project, index }: Props) {
+export default function ProjectCard({ project, index, onClick }: Props) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="group card-hover rounded-xl border border-border bg-card p-6 flex flex-col gap-4"
+      className="group card-hover rounded-xl border border-border bg-card p-6 flex flex-col gap-4 cursor-pointer"
+      onClick={onClick}
     >
-      {/* Image placeholder */}
       {project.image ? (
         <img
           src={project.image}
@@ -31,7 +32,6 @@ export default function ProjectCard({ project, index }: Props) {
         </div>
       )}
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
           <span key={tag} className="category-badge">
