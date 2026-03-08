@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -11,6 +13,7 @@ const navItems = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   return (
     <>
@@ -24,27 +27,47 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5"
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            animate={open ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block h-0.5 w-6 bg-foreground"
-            transition={{ duration: 0.3 }}
-          />
-        </button>
+        <div className="relative z-50 flex items-center gap-2">
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:text-primary"
+            aria-label="Toggle theme"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={theme}
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.2 }}
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </motion.span>
+            </AnimatePresence>
+          </button>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-foreground"
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              animate={open ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+              className="block h-0.5 w-6 bg-foreground"
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-foreground"
+              transition={{ duration: 0.3 }}
+            />
+          </button>
+        </div>
       </header>
 
       <AnimatePresence>
