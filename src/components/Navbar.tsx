@@ -13,7 +13,7 @@ const navItems = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <>
@@ -29,19 +29,19 @@ export default function Navbar() {
 
         <div className="relative z-50 flex items-center gap-2">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:text-primary"
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
-                key={theme}
+                key={resolvedTheme}
                 initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
                 animate={{ opacity: 1, rotate: 0, scale: 1 }}
                 exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
                 transition={{ duration: 0.2 }}
               >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {resolvedTheme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </motion.span>
             </AnimatePresence>
           </button>
