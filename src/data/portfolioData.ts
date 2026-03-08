@@ -2,6 +2,7 @@
 
 export interface Project {
   id: string;
+  number: number; // number within its category
   title: string;
   description: string;
   category: string;
@@ -19,90 +20,90 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    id: "web",
-    name: "Web Development",
-    description: "Full-stack web applications and websites",
-    icon: "Globe",
+    id: "routing-switching",
+    name: "Routing & Switching",
+    description: "Network routing, switching, and infrastructure projects",
+    icon: "Network",
   },
   {
-    id: "mobile",
-    name: "Mobile Apps",
-    description: "iOS and Android mobile applications",
-    icon: "Smartphone",
+    id: "server-admin",
+    name: "Server Administration",
+    description: "Server setup, management, and virtualization projects",
+    icon: "Server",
   },
   {
-    id: "design",
-    name: "UI/UX Design",
-    description: "User interface and experience design projects",
-    icon: "Palette",
-  },
-  {
-    id: "ai",
-    name: "AI & ML",
-    description: "Artificial intelligence and machine learning projects",
-    icon: "Brain",
+    id: "firewall-admin",
+    name: "Firewall Administration",
+    description: "Firewall configuration, security policies, and threat management",
+    icon: "Shield",
   },
 ];
 
 export const projects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
+    number: 1,
+    title: "Enterprise VLAN Configuration",
     description:
-      "A full-stack e-commerce platform with payment integration, product management, and real-time inventory tracking.",
-    category: "web",
+      "Designed and implemented a multi-VLAN architecture for a corporate network with 500+ endpoints, including inter-VLAN routing using Layer 3 switches.",
+    category: "routing-switching",
     image: "",
-    tags: ["React", "Node.js", "PostgreSQL"],
+    tags: ["Cisco", "VLAN", "Layer 3"],
     link: "#",
   },
   {
     id: "2",
-    title: "Health Tracker App",
+    number: 2,
+    title: "OSPF Network Deployment",
     description:
-      "Cross-platform mobile app for tracking daily health metrics, exercise routines, and nutrition.",
-    category: "mobile",
+      "Deployed OSPF routing protocol across a multi-site WAN environment with redundant links and failover configurations.",
+    category: "routing-switching",
     image: "",
-    tags: ["React Native", "Firebase", "TypeScript"],
+    tags: ["OSPF", "WAN", "Redundancy"],
     link: "#",
   },
   {
     id: "3",
-    title: "SaaS Dashboard Redesign",
+    number: 1,
+    title: "Windows Server Active Directory",
     description:
-      "Complete redesign of an analytics dashboard improving user engagement by 40%.",
-    category: "design",
+      "Set up and managed Active Directory Domain Services for an organization with 300+ users, including GPO management and DNS/DHCP configuration.",
+    category: "server-admin",
     image: "",
-    tags: ["Figma", "Design System", "Prototyping"],
+    tags: ["Windows Server", "AD DS", "GPO"],
     link: "#",
   },
   {
     id: "4",
-    title: "Chatbot Engine",
+    number: 2,
+    title: "Linux Server Hardening",
     description:
-      "NLP-powered chatbot engine for customer support automation with multi-language support.",
-    category: "ai",
+      "Implemented security hardening on Ubuntu and CentOS servers including SSH key-based auth, fail2ban, and automated patching.",
+    category: "server-admin",
     image: "",
-    tags: ["Python", "TensorFlow", "NLP"],
+    tags: ["Linux", "Security", "Automation"],
     link: "#",
   },
   {
     id: "5",
-    title: "Portfolio CMS",
+    number: 1,
+    title: "Palo Alto Firewall Deployment",
     description:
-      "Content management system designed for creative portfolios with drag-and-drop page builder.",
-    category: "web",
+      "Configured and deployed Palo Alto next-gen firewalls with App-ID, URL filtering, and threat prevention profiles for a corporate network.",
+    category: "firewall-admin",
     image: "",
-    tags: ["Next.js", "Prisma", "Tailwind"],
+    tags: ["Palo Alto", "Next-Gen", "Threat Prevention"],
     link: "#",
   },
   {
     id: "6",
-    title: "Fitness Social App",
+    number: 2,
+    title: "FortiGate VPN Configuration",
     description:
-      "Social fitness app with workout sharing, challenges, and community leaderboards.",
-    category: "mobile",
+      "Implemented site-to-site IPSec VPN tunnels using FortiGate firewalls connecting multiple branch offices to headquarters.",
+    category: "firewall-admin",
     image: "",
-    tags: ["Flutter", "Supabase", "Dart"],
+    tags: ["Fortinet", "VPN", "IPSec"],
     link: "#",
   },
 ];
@@ -116,9 +117,9 @@ export const profileData = {
   social: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
+    website: "https://example.com",
   },
-  skills: ["React", "TypeScript", "Node.js", "Python", "Figma", "PostgreSQL", "AWS", "Docker"],
+  skills: ["Cisco", "Palo Alto", "Fortinet", "Windows Server", "Linux", "VMware", "AWS", "Docker", "Python", "Networking"],
   experience: [
     {
       role: "Senior Developer",

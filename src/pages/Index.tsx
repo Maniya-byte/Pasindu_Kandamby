@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Smartphone, Palette, Brain } from "lucide-react";
+import { ArrowRight, Network, Server, Shield } from "lucide-react";
 import Layout from "@/components/Layout";
 import HeroCarousel from "@/components/HeroCarousel";
 import ProjectCard from "@/components/ProjectCard";
@@ -10,10 +10,9 @@ import { categories, projects, profileData, type Project } from "@/data/portfoli
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
-  Globe,
-  Smartphone,
-  Palette,
-  Brain,
+  Network,
+  Server,
+  Shield,
 };
 
 export default function Index() {
@@ -96,9 +95,9 @@ export default function Index() {
             </h2>
           </motion.div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat, i) => {
-              const Icon = iconMap[cat.icon] || Globe;
+              const Icon = iconMap[cat.icon] || Network;
               return (
                 <motion.div
                   key={cat.id}
