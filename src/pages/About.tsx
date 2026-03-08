@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Github, Linkedin, Globe, GraduationCap, Award } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Globe, GraduationCap, Award, Archive } from "lucide-react";
 import Layout from "@/components/Layout";
 import { profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -233,6 +233,3 @@ export default function About() {
     </Layout>
   );
 }
-
-// Import needed for the icon in the CV section
-import { Archive } from "lucide-react";
