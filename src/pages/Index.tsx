@@ -7,6 +7,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import ProjectCard from "@/components/ProjectCard";
 import { categories, projects, profileData } from "@/data/portfolioData";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import WavingRobot from "@/components/WavingRobot";
 
 const iconMap: Record<string, React.ElementType> = {
   Network,
@@ -19,6 +20,7 @@ export default function Index() {
 
   return (
     <Layout>
+      <WavingRobot />
       {/* Hero Carousel */}
       <section className="section-padding pb-0">
         <div className="mx-auto max-w-6xl">
