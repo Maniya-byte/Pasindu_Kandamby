@@ -5,12 +5,12 @@
 export const profileData = {
   name: "Pasindu Kandamby",
   title: "Network & System Administrator",
-  bio: "I craft secure network infrastructures and manage enterprise systems. Passionate about cybersecurity, firewall management, and building resilient IT environments.",
+  bio: "Dedicated and detail-oriented graduate with a solid foundation in network and system administration, backed by a year of hands-on experience. Proficient in managing and troubleshooting IT infrastructures, including servers, networks, and security systems. Adept at deploying and configuring operating systems, monitoring network traffic, and ensuring optimal performance and security. Eager to leverage technical skills in a challenging IT environment to contribute effectively to organizational goals.",
   email: "hello@example.com",
   location: "San Francisco, CA",
   social: {
     github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    linkedin: "http://www.linkedin.com/in/pasindu-manelka-kandamby",
     website: "https://example.com",
   },
   skills: [
